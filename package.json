@@ -1,0 +1,26 @@
+{
+  "name": "hydra-monitor-sentinel",
+  "version": "0.1.0",
+  "description": "HYDRA Monitor Sentinel (Node.js remote monitoring)",
+  "main": "hydra-monitor-sentinel",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robcolbert/hydra-monitor-sentinel.git"
+  },
+  "keywords": [
+    "hydra",
+    "monitor"
+  ],
+  "author": "Rob Colbert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robcolbert/hydra-monitor-sentinel/issues"
+  },
+  "homepage": "https://github.com/robcolbert/hydra-monitor-sentinel#readme",
+  "dependencies": {
+    "diskusage": "^1.0.0"
+  }
+}
