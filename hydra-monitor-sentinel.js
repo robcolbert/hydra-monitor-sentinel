@@ -17,19 +17,28 @@ class HydraMonitorSentinel {
     }
 
     self.hydra = hydra;
-    self.app = hydra.app;
     self.log = hydra.app.locals.log;
     self.redis = hydra.app.locals.redis;
     self.config = hydra.config;
 
-    self.router = self.hydra.express.Router();
+    self.app = hydra.express();
+    self.router = hydra.express.Router();
+
     self.router.get('/', self.onMonitorRequest.bind(self));
     self.app.use('/hydra-monitor', self.router);
 
-    self.status = 'attached';
+    self.status = 'initializing';
     self.log.debug('hydra-monitor-sentinel', { status: self.status });
 
     self.stats = { };
+
+    self.app.listen(self.config.monitor.port, self.config.monitor.bind, ( ) => {
+      self.status = 'attached';
+      self.log.info('hydra-monitor-sentinel online', {
+        bind: self.config.monitor.bind,
+        port: self.config.monitor.port
+      });
+    });
   }
 
   onMonitorRequest (req, res, next) {
