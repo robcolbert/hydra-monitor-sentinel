@@ -1,6 +1,6 @@
 {
   "name": "hydra-monitor-sentinel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HYDRA Monitor Sentinel (Node.js remote monitoring)",
   "main": "hydra-monitor-sentinel",
   "scripts": {
