@@ -75,16 +75,18 @@ class HydraMonitorSentinel {
     };
 
     var jobs = [ ];
-    self.config.monitor.disks.forEach((pathname) => {
-      jobs.push(
-        diskusage
-        .check(pathname)
-        .then((result) => {
-          result.pathname = pathname;
-          return Promise.resolve(result);
-        })
-      );
-    });
+    if (self.config.monitor.disks && self.config.monitor.disks.length) {
+      self.config.monitor.disks.forEach((pathname) => {
+        jobs.push(
+          diskusage
+          .check(pathname)
+          .then((result) => {
+            result.pathname = pathname;
+            return Promise.resolve(result);
+          })
+        );
+      });
+    }
     Promise
     .all(jobs)
     .then((results) => {
